@@ -9,6 +9,10 @@ ctx.verify_mode = ssl.CERT_NONE
 
 
 def get_mp3(word):
+    '''
+    In order to retrieve the online pronounciation audio file, we need to
+    use api to retrieve the url of the audio file we are looking for.
+     ''' 
     url = "https://api.dictionaryapi.dev/api/v2/entries/en/"+word
     # urllib open handle
     uh = urllib.request.urlopen(url, context=ctx)
@@ -16,14 +20,13 @@ def get_mp3(word):
     data = uh.read() 
     # Parsing UTF-8 in HTML into Objects in JavaScript (decode)
     info = json.loads(data) 
-    # Print JS
+    # parsing json file and retrieve the url of the audio file we are looking for
     str=json.dumps(info[0]["phonetics"][0]["audio"])
 
     # write json into a file
     with open("history:"+word+".json", "w") as write_file:
         json.dump(info[0], write_file, indent=4)
     return str[1:-1]
- 
 
 def review(word):
     # read json from a file
