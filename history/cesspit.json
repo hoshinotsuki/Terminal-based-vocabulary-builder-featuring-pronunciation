@@ -1,0 +1,35 @@
+{
+    "word": "cesspit",
+    "phonetic": "/\u02c8s\u025bsp\u026at/",
+    "phonetics": [
+        {
+            "text": "/\u02c8s\u025bsp\u026at/",
+            "audio": ""
+        }
+    ],
+    "meanings": [
+        {
+            "partOfSpeech": "noun",
+            "definitions": [
+                {
+                    "definition": "A cesspool; a pit or covered cistern used to collect sewage and waste water.",
+                    "synonyms": [],
+                    "antonyms": []
+                }
+            ],
+            "synonyms": [
+                "cesspool",
+                "gongpit",
+                "septic tank"
+            ],
+            "antonyms": []
+        }
+    ],
+    "license": {
+        "name": "CC BY-SA 3.0",
+        "url": "https://creativecommons.org/licenses/by-sa/3.0"
+    },
+    "sourceUrls": [
+        "https://en.wiktionary.org/wiki/cesspit"
+    ]
+}
