@@ -1,0 +1,50 @@
+{
+    "word": "encompasses",
+    "phonetics": [],
+    "meanings": [
+        {
+            "partOfSpeech": "verb",
+            "definitions": [
+                {
+                    "definition": "To form a circle around; to encircle.",
+                    "synonyms": [],
+                    "antonyms": []
+                },
+                {
+                    "definition": "To include within its scope; to circumscribe or go round so as to surround; to enclose; to contain.",
+                    "synonyms": [
+                        "embrace"
+                    ],
+                    "antonyms": []
+                },
+                {
+                    "definition": "To include completely; to describe fully or comprehensively.",
+                    "synonyms": [
+                        "comprehend"
+                    ],
+                    "antonyms": [],
+                    "example": "This book on English grammar encompasses all irregular verbs."
+                },
+                {
+                    "definition": "To go around, especially, to circumnavigate.",
+                    "synonyms": [],
+                    "antonyms": [],
+                    "example": "Drake encompassed the globe."
+                }
+            ],
+            "synonyms": [
+                "comprehend",
+                "embrace"
+            ],
+            "antonyms": []
+        }
+    ],
+    "license": {
+        "name": "CC BY-SA 3.0",
+        "url": "https://creativecommons.org/licenses/by-sa/3.0"
+    },
+    "sourceUrls": [
+        "https://en.wiktionary.org/wiki/encompass",
+        "https://en.wiktionary.org/wiki/encompasses"
+    ]
+}

@@ -43,18 +43,14 @@ def get_json(word):
 
     meanings = info[0]['meanings']
     for _ in meanings:
-        # print definitions
-        if len(_["definitions"]) >1:
-            text_format("\nWhen '{0}' is used as a [{1}], there are {2} meanings:".format(word,_['partOfSpeech'],len(_["definitions"])))
-        elif len(_["definitions"]) ==1:
-            text_format("\nWhen '{0}' is used as a [{1}], there is 1 meaning:".format(word,_['partOfSpeech']))
+        # print definitions 
+        print("[{0}]".format(_['partOfSpeech'])) 
             
-        
         # colloect syns and ants 
         for d in _["definitions"]:
             syn_ls.append(d["synonyms"])
             ant_ls.append(d["antonyms"])
-            text_format("{0}:{1}".format(_["definitions"].index(d)+1,d["definition"]))
+            print("{0}. {1}".format(_["definitions"].index(d)+1,d["definition"]))
 
     # print out syns and ants
     if d["synonyms"]:
@@ -62,7 +58,7 @@ def get_json(word):
     if d["antonyms"]:
         print("\nantonyms:",*d["antonyms"])
 
-    print("Retrieving audio:",get_mp3(info))
+    print("\nRetrieving audio:",get_mp3(info))
     save_word(info)
     return info
 
@@ -78,9 +74,9 @@ def get_mp3(info):
 
 # write json into a file
 def save_word(info):
-    cmd=input("Do you want to save this entry? (Yes: press any key, No: press 'N')\n")
+    cmd=input("\nDo you want to save this entry? (Yes: press any key, No: press 'N')\n")
     if cmd != 'N' and cmd != 'n':
-        with open("/Users/lunayang/Documents/Projects/Flashcards/history/{}.json".format(info[0]['word']), "w") as write_file:
+        with open("history/{}.json".format(info[0]['word']), "w") as write_file:
             json.dump(info[0], write_file, indent=4)
 
         mp3 = get_mp3(info)
@@ -94,7 +90,7 @@ def save_word(info):
 
 # read json from a file
 def review(word):
-     with open("history:"+word+".json", "r") as read_file:
+     with open("history/{0}.json".format(word), "r") as read_file:
         #Serialize utf8-formatted str to a JSON-formatted str
         json.dumps(json.load(read_file), indent=4)
 

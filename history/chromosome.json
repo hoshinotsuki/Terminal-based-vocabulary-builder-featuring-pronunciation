@@ -1,0 +1,46 @@
+{
+    "word": "chromosome",
+    "phonetic": "/\u02c8k\u0279\u0259\u028a.m\u0259\u02ccs\u0259\u028am/",
+    "phonetics": [
+        {
+            "text": "/\u02c8k\u0279\u0259\u028a.m\u0259\u02ccs\u0259\u028am/",
+            "audio": "https://api.dictionaryapi.dev/media/pronunciations/en/chromosome-uk.mp3",
+            "sourceUrl": "https://commons.wikimedia.org/w/index.php?curid=68569022",
+            "license": {
+                "name": "BY 4.0",
+                "url": "https://creativecommons.org/licenses/by/4.0"
+            }
+        },
+        {
+            "text": "/\u02c8k\u0279o\u028am\u0259\u02ccso\u028am/",
+            "audio": "https://api.dictionaryapi.dev/media/pronunciations/en/chromosome-us.mp3",
+            "sourceUrl": "https://commons.wikimedia.org/w/index.php?curid=60628108",
+            "license": {
+                "name": "BY-SA 4.0",
+                "url": "https://creativecommons.org/licenses/by-sa/4.0"
+            }
+        }
+    ],
+    "meanings": [
+        {
+            "partOfSpeech": "noun",
+            "definitions": [
+                {
+                    "definition": "A linear arrangement of condensed DNA and associated proteins (such as chaperone proteins) which contains the genetic material (genome) of an organism.",
+                    "synonyms": [],
+                    "antonyms": [],
+                    "example": "Chromosomes store genetic information."
+                }
+            ],
+            "synonyms": [],
+            "antonyms": []
+        }
+    ],
+    "license": {
+        "name": "CC BY-SA 3.0",
+        "url": "https://creativecommons.org/licenses/by-sa/3.0"
+    },
+    "sourceUrls": [
+        "https://en.wiktionary.org/wiki/chromosome"
+    ]
+}
