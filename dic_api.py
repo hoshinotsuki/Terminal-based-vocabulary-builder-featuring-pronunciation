@@ -27,9 +27,7 @@ def get_json(word):
     data = uh.read() 
     # Parsing UTF-8 in HTML into Objects in JavaScript (decode)
     info = json.loads(data)  
-
-    # Parsing json 
-    word = info[0]['word']
+ 
 
     #Print Phonetic:
     try:
