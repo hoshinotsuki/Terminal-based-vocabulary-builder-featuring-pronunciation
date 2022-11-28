@@ -15,7 +15,7 @@ ctx.verify_mode = ssl.CERT_NONE
 
 class webster:
     def __init__(self,word) -> None: 
-        self.word = word 
+        self.word = word.split() 
 
     def get_json2(self):
         word = self.word
