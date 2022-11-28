@@ -14,13 +14,13 @@ ctx.check_hostname = False
 ctx.verify_mode = ssl.CERT_NONE
 
 class webster:
-    def __init__(self,word) -> None:
-        self.word = word  
+    def __init__(self,word) -> None: 
+        self.word = word 
 
     def get_json2(self):
         word = self.word
         url = "https://www.dictionaryapi.com/api/v3/references/collegiate/json/"+word+"?key="+hidden.key
-        print(url)
+        #print(url)
 
         # urllib open handle
         try:
@@ -32,16 +32,15 @@ class webster:
         # Parsing UTF-8 in HTML into Objects in JavaScript (decode)
         p_obj = json.loads(data)
         
+        # Smart spell
         try:
             meta = p_obj[0]['meta']
         except:
-            print("Do you mean...\n"+" /".join(p_obj),end="?")
+            print("Do you mean...\n"+" / ".join(p_obj),end="?\n")
             return
-        #Pronouciation
-        try:
-            phonetic = p_obj[0]['hwi']['prs'][0]['mw']
-        except:
-            phonetic = "No phonetic avaliable. :("
+
+        # Pronouciation 
+        phonetic = p_obj[0]['hwi']['prs'][0]['mw']  
         sound = p_obj[0]['hwi']['prs'][0]['sound']['audio'] 
         if re.findall('\d',word):
             self.mp3= "https://media.merriam-webster.com/audio/prons/en/us/mp3/number/"+sound+".mp3"
@@ -49,7 +48,15 @@ class webster:
             self.mp3= "https://media.merriam-webster.com/audio/prons/en/us/mp3/"+word[0]+"/"+sound+".mp3"
         print("["+phonetic+"]",self.mp3)
 
-        # definitions
+        # Syns (RegEx)
+        try:
+            syns_str = p_obj[0]['syns'][0]['pt'][0][1]
+            syns = set(re.findall(r'\{sc\}(.*?)\{',syns_str))
+            print("[synonyms]\n"+" / ".join(syns))
+        except:
+            pass
+
+        # Definitions 
         for meta in p_obj: 
             if meta['shortdef']:
                 try:
@@ -57,8 +64,12 @@ class webster:
                 except:
                     print('[verb]')
                 defi = meta['shortdef']
-                for _ in range(len(defi)):
-                    print(str(_+1)+'.',defi[_])
+                try:
+                    for _ in range(len(defi)):
+                        print(str(_+1)+'.',defi[_])
+                except Exception as e:
+                    print(e)
+
         self.save_word(p_obj)
         return p_obj
 
