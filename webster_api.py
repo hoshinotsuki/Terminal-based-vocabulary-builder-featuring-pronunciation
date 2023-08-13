@@ -1,11 +1,11 @@
 import json
 import urllib.request, urllib.parse, urllib.error
-import ssl
-import textwrap
+import ssl 
 import requests
 import hidden
 import re
 import os
+import codecs 
 
 
 # Ignore SSL certificate errors
@@ -15,7 +15,7 @@ ctx.verify_mode = ssl.CERT_NONE
 
 class webster:
     def __init__(self,word) -> None: 
-        self.word = word.split()[0]
+        self.word = word.lower().split()[0]
 
     def get_json2(self):
         word = self.word
@@ -28,9 +28,11 @@ class webster:
         except Exception as e:
             return print(e)
         # read html in a format of UTF-8
-        data = uh.read() 
+        data = uh.read()
         # Parsing UTF-8 in HTML into Objects in JavaScript (decode)
-        p_obj = json.loads(data)
+        p_obj = json.loads(data) 
+        p_str = json.dumps(p_obj) 
+        #print(p_str)
         
         # Smart spell
         try:
@@ -39,14 +41,19 @@ class webster:
             print("Do you mean...\n"+" / ".join(p_obj),end="?\n")
             return
 
-        # Pronouciation 
-        phonetic = p_obj[0]['hwi']['prs'][0]['mw']  
-        sound = p_obj[0]['hwi']['prs'][0]['sound']['audio'] 
-        if re.findall('\d',word):
-            self.mp3= "https://media.merriam-webster.com/audio/prons/en/us/mp3/number/"+sound+".mp3"
-        else:
-            self.mp3= "https://media.merriam-webster.com/audio/prons/en/us/mp3/"+word[0]+"/"+sound+".mp3"
-        print("["+phonetic+"]",self.mp3)
+        # Pronouciation (RegEx)
+        phonetic = re.findall('mw\"\: \"(.*?)\"\,',p_str)
+        sound = re.findall('audio\"\:\ "(.*?)\"\,\ "',p_str)
+        
+        self.mp3= "https://media.merriam-webster.com/audio/prons/en/us/mp3/"+word[0]+"/"+sound[0]+".mp3"
+        print("["+codecs.decode(phonetic[0],'unicode_escape')+"]",self.mp3) # transfer raw str to normal str
+        
+
+        '''If you want to pull all audio out
+        for _ in range(len(phonetic)):
+            self.mp3= "https://media.merriam-webster.com/audio/prons/en/us/mp3/" + word[0] + "/" + sound[_] + ".mp3"
+            print("["+codecs.decode(phonetic[_],'unicode_escape')+"]",self.mp3) # transfer raw str to normal str
+        '''
 
         # Syns (RegEx)
         try:
@@ -80,7 +87,7 @@ class webster:
             with open("/Users/lunayang/Documents/datas/LunaFlashy/history/{}.json".format(self.word), "w") as write_file:
                 json.dump(info[0], write_file, indent=4)
             doc = requests.get(self.mp3)
-            with open('/Users/lunayang/Documents/datas/LunaFlashy/audio/{}.mp3'.format(self.word), 'wb') as f:
+            with open('/Users/lunayang/Documents/datas/LunaFlashy/audio/{}.mp3'.format(self.word), 'wb') as f: 
                 f.write(doc.content)
             print("word saved!".center(80,'*'))  
 
