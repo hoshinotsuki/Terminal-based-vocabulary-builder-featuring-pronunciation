@@ -1,4 +1,4 @@
-# Terminal-vocabulary-builder-featuring-pronouciation-via-API
+# Terminal-based-vocabulary-builder-featuring-pronunciation
 
 This is a Python Project to assist non-native speakers in pronouncing any vocabulary correctly.
 
