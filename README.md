@@ -1,6 +1,6 @@
-# LunaFlashy
+# Terminal-vocabulary-builder-featuring-pronouciation-via-API
 
-Python Project
+This is a Python Project to assist non-native speakers in pronouncing any vocabulary correctly.
 
 Method:
 python/ http/ json/ api
